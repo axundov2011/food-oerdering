@@ -9,14 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "chromedriver": "^124.0.3",
+    "formik": "^2.4.6",
+    "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.2"
+    "react-icons": "^5.2.0",
+    "react-outside-click-handler": "^1.3.0",
+    "react-slick": "^0.30.2",
+    "selenium-webdriver": "^4.20.0",
+    "slick-carousel": "^1.8.1",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "autoprefixer": "^10.4.19",
     "eslint": "^8",
-    "eslint-config-next": "14.2.2"
+    "eslint-config-next": "14.2.2",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3"
   }
 }
