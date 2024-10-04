@@ -54,10 +54,10 @@ const Header = () => {
           )}
         </nav>
         <div className="flex gap-x-4 items-center">
-          <Link href="#">
-            <FaUserAlt className="hover:text-primariy transition-all" />
+          <Link href="/auth/login">
+            <FaUserAlt className="hover:text-primariy transition-all cursor-pointer" />
           </Link>
-          <Link href="#">
+          <Link href="/cart">
             <FaShoppingCart className="hover:text-primariy transition-all" />
           </Link>
           <button onClick={() => setIsSearchModal(true)}>
