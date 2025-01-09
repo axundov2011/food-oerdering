@@ -14,6 +14,9 @@ const Header = () => {
 
   const router = useRouter();
 
+  console.log(router.push);
+  
+
 
   return (
     <div

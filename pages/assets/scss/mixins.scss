@@ -1,0 +1,37 @@
+@mixin text-properties(
+  $font-size: null,
+  $font-weight: null,
+  $line-height: null,
+  $color: null,
+  $font-family: null,
+  $text-align: null,
+  $text-transform: null
+) {
+    @if $font-size {
+        font-size: $font-size;
+    }
+
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+
+    @if $line-height {
+        line-height: $line-height;
+    }
+
+    @if $color {
+        color: $color;
+    }
+
+    @if $font-family {
+        font-family: $font-family;
+    }
+
+    @if $text-align {
+        text-align: $text-align;
+    }
+
+    @if $text-transform {
+        text-transform: $text-transform;
+    }
+}

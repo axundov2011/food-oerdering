@@ -5,7 +5,7 @@ const Cart = () => {
   return (
     <div className="min-h-[calc(100vh_-_433px)]">
       <div className="flex justify-between items-center">
-        <div className="min-h-[calc(100vh_-_433px)]">
+        <div className="min-h-[calc(100vh_-_433px)] flex items-center flex-1">
           <table>
             <thead>
               <tr>
@@ -30,11 +30,15 @@ const Cart = () => {
             </tbody>
           </table>
         </div>
-        <div className="bg-secondary min-h-[calc(100vh_-_433px)]">
-          <Title>Total</Title>
-          <div>
-            <span>Subtotal:</span>
+        <div className="bg-secondary min-h-[calc(100vh_-_433px)] flex flex-col justify-center  text-white p-12 ">
+          <Title addClass="text-[40px]"> CartTotal</Title>
+          <div className="mt-6">
+            <b>Subtotal: </b>$20 <br />
+            <b className="inline-block my-1">Discount: </b>$0.00 <br />
+            <b>Total: </b>$20
           </div>
+
+          <button className="btn-primary"> Checkout Now!</button>
         </div>
       </div>
     </div>

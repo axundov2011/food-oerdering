@@ -6,4 +6,4 @@ const Title = ({children, className}) => {
   )
 }
 
-export default Title
+export default Title    
