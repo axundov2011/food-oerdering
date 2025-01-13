@@ -1,0 +1,128 @@
+// Sass dəyişənləri
+$secondary-color: #1f2937; // Tailwind bg-secondary
+$primary-color: #ffa500; // Tailwind hover:bg-primary
+$text-gray-500: #6b7280; // Tailwind text-gray-500
+$text-gray-400: #9ca3af; // Tailwind text-gray-400
+$bg-gray-700: #374151; // Tailwind bg-gray-700
+$border-gray-700: #4b5563; // Tailwind border-gray-700
+$white-color: #ffffff; // Tailwind hover:text-white
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  .cartTable {
+    min-height: calc(100vh - 433px); // md:min-h-[calc(100vh_-_433px)]
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 2.5rem; // p-10
+    overflow-x: auto;
+    width: 100%;
+
+    table {
+      width: 100%;
+      text-align: center;
+      font-size: 0.875rem; // text-sm
+      color: $text-gray-500; // text-gray-500
+      min-width: 1000px; // min-w-[1000px]
+
+      thead {
+        font-size: 0.75rem; // text-xs
+        color: $text-gray-400; // text-gray-400
+        text-transform: uppercase;
+        background-color: $bg-gray-700; // bg-gray-700
+
+        th {
+          padding: 0.75rem 1.5rem; // py-3 px-6
+        }
+      }
+
+      tbody {
+        tr {
+          transition: all 0.3s;
+          background-color: $secondary-color; // bg-secondary
+          border-bottom: 1px solid $border-gray-700; // border-gray-700
+
+          &:hover {
+            background-color: $primary-color; // hover:bg-primary
+          }
+
+          td {
+            padding: 1rem 1.5rem; // py-4 px-6
+            font-weight: 500; // font-medium
+            white-space: nowrap; // whitespace-nowrap
+            color: inherit;
+
+            &:hover {
+              color: $white-color; // hover:text-white
+            }
+
+            &.flexCenter {
+              display: flex;
+              align-items: center; // Şəkil və mətni Product başlığı ilə hizalamaq
+              gap: 1rem; // Şəkil ilə mətn arasında məsafə
+              justify-content: center;
+              vertical-align: middle;
+            }
+
+            img {
+              width: 50px;
+              height: 50px;
+              border-radius: 0.375rem; 
+
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .cartTotal {
+    background-color: $secondary-color;
+    min-height: calc(100vh - 533px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $white-color;
+    padding: 4rem;
+  
+    .title {
+      font-size: 40px;
+    }
+  
+    .summary {
+      margin-top: 1.5rem;
+  
+      b {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+  
+        &.inline {
+          margin: 0.5rem 0;
+        }
+      }
+    }
+  
+    .btnPrimary {
+      margin-top: 1rem;
+      background-color: $primary-color;
+      color: $white-color;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      text-transform: uppercase;
+  
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}

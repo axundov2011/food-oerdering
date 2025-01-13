@@ -1,0 +1,56 @@
+// Rəng dəyişənləri
+$primary-color: #007bff; // Sizin `border-primary` rəngi
+$red-color: #ff0000; // Sizin `border-red-500` rəngi
+$danger-color: #ff4d4f; // Sizin `text-danger` rəngi
+
+// Ümumi stil
+.input-wrapper {
+  width: 100%;
+
+  .label {
+    position: relative;
+    display: block;
+    width: 100%;
+    cursor: text;
+
+    .input {
+      height: 3.5rem; 
+      width: 100%;
+      border: 1px solid $primary-color;
+      outline: none;
+      padding: 0 1rem; /* px-4 */
+      transition: border-color 0.3s;
+
+      &.error {
+        border-color: $red-color; 
+      }
+
+      &.valid {
+        border-color: $primary-color;
+      }
+    }
+
+    .placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0 1rem;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      transition: all 0.3s;
+
+      // Fokusda və ya doldurulduqda
+      &.active {
+        height: 1.75rem; 
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  .error-message {
+    font-size: 0.75rem;
+    color: $danger-color;
+  }
+}

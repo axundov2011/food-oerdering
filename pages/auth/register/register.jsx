@@ -1,8 +1,9 @@
-import { ErrorMessage, useFormik } from "formik";
+import { useFormik } from "formik";
+import styles from "./register.module.scss";
 import Title from "@/components/ui/Title";
 import Input from "@/components/form/Input";
-import Link from "next/link";
 import { registerSchema } from "@/schema/register";
+import Link from "next/link";
 
 const Register = () => {
   const onSubmit = async (values, actions) => {
@@ -22,8 +23,8 @@ const Register = () => {
       validationSchema: registerSchema,
     });
 
-  const inputs = [
-    {
+    const inputs = [
+      {
         id: 1,
         name: "fullName",
         type: "text",
@@ -32,41 +33,44 @@ const Register = () => {
         errorMessage: errors.fullName,
         touched: touched.fullName,
       },
-    {
-      id: 2,
-      name: "email",
-      type: "email",
-      placeholder: "Your email address",
-      value: values.email,
-      errorMessage: errors.email,
-      touched: touched.email,
-    },
-    {
-      id: 3,
-      name: "password",
-      type: "password",
-      placeholder: "Your passwordx address",
-      value: values.password,
-      errorMessage: errors.password,
-      touched: touched.password,
-    },
-    {
+      {
+        id: 2,
+        name: "email",
+        type: "email",
+        placeholder: "Your email address",
+        value: values.email,
+        errorMessage: errors.email,
+        touched: touched.email,
+      },
+     
+      {
+        id: 3,
+        name: "password",
+        type: "password",
+        placeholder: "Your Passowrd",
+        value: values.password,
+        errorMessage: errors.password,
+        touched: touched.password,
+      },
+      {
         id: 4,
         name: "confirmPassword",
         type: "password",
-        placeholder: "Your Password Again",
+        placeholder: "Your Passowrd Again",
         value: values.confirmPassword,
         errorMessage: errors.confirmPassword,
         touched: touched.confirmPassword,
-    },
-  ];
+      },
+      
+     
+     
+    ];
+
   return (
-    <div className="container  mx-auto">
-      <form className="flex flex-col items-center my-20 md:w-1/2 w-full mx-auto"
-      onSubmit={handleSubmit}
-      >
-        <Title addClass="text-[40px] mb-6">Register</Title>
-        <div className="flex flex-col gap-y-3 w-full">
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <Title addClass={styles.title}>Register</Title>
+        <div className={styles.inputGroup}>
           {inputs.map((input) => (
             <Input
               key={input.id}
@@ -75,15 +79,12 @@ const Register = () => {
               onBlur={handleBlur}
             />
           ))}
-         <div className="flex flex-col w-full gap-y-4 mt-6">
-         <button className="btn-primary">Login</button>
-          <button className="btn-primary !bg-secondary">
-            <i className="fa-brands fa-github"></i>GITHUB
-          </button>
-          {/* <Link href="/auth/register" className="">
-            <span className="text-sm underline cursor-pointer text-secondary">Do you have a account?</span>
-          </Link> */}
-         </div>
+          <div className={styles.buttonGroup}>
+            <button className={styles.btnPrimary}>Register</button>
+            <Link href="/auth/login/login" className={styles.link}>
+              <span>Dont have an account?</span>
+            </Link>
+          </div>
         </div>
       </form>
     </div>

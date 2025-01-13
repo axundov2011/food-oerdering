@@ -1,0 +1,42 @@
+$primary-color: #ffa500; 
+$white-color: #ffffff; 
+$border-color: #e5e7eb;
+$text-color: #333333; 
+
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  
+    h1 {
+      font-size: 2.5rem;
+      color: $text-color;
+    }
+  
+    .formGrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+  
+    button {
+      width: 110px;
+      margin-top: 1rem;
+      background-color: $primary-color;
+      color: $white-color;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 20px;  
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+  
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+  

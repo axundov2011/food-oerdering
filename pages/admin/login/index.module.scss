@@ -1,0 +1,72 @@
+.container {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
+  .form {
+    display: flex; /* Unutmayın ki, flex-direction tək başına işləməyəcək */
+    flex-direction: column;
+    margin: 5rem auto;
+    width: 100%;
+  
+    @media (min-width: 768px) {
+      width: 50%;
+    }
+  }
+  
+  .title {
+    font-size: 40px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 90%;
+  }
+  
+  .input {
+    border: 1px solid #FFD700;
+    background-color: #FFFFFF; 
+    padding: 10px;
+  
+    width: 100%;
+
+  }
+  .buttonGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
+  
+    .btnPrimary {
+      background-color: #FFA500;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: darken(#FFA500, 10%);
+      }
+  
+      &.btnSecondary {
+        background-color: #6c757d;
+  
+        &:hover {
+          background-color: darken(#6c757d, 10%);
+        }
+      }
+    }
+  }
+  
+  .link {
+    font-size: 0.875rem;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #6c757d;
+  }
+  

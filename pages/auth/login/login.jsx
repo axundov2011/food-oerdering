@@ -1,5 +1,5 @@
-import { ErrorMessage, useFormik } from "formik";
-import styles from './login.module.scss'; // Sass modulu importu
+import { useFormik } from "formik";
+import styles from "./login.module.scss";
 import Title from "@/components/ui/Title";
 import Input from "@/components/form/Input";
 import Link from "next/link";
@@ -21,6 +21,8 @@ const Login = () => {
       validationSchema: loginSchema,
     });
 
+    console.log("Errors:", errors);
+console.log("Touched:", touched);
   const inputs = [
     {
       id: 1,
@@ -28,23 +30,23 @@ const Login = () => {
       type: "email",
       placeholder: "Your email address",
       value: values.email,
-      errorMessage: errors.email,
+      errors: errors.email,
       touched: touched.email,
     },
     {
-      id: 1,
+      id: 2,
       name: "password",
       type: "password",
       placeholder: "Your password",
       value: values.password,
-      errorMessage: errors.password,
+      errors: errors.password,
       touched: touched.password,
     },
   ];
 
   return (
     <div className={styles.container}>
-      <form className={`${styles.form} ${styles.flexColumn}`} onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <Title addClass={styles.title}>Login</Title>
         <div className={styles.inputGroup}>
           {inputs.map((input) => (
@@ -53,15 +55,18 @@ const Login = () => {
               {...input}
               onChange={handleChange}
               onBlur={handleBlur}
+              placeholder={input.placeholder}
+              errorMessage={input.errors}
+              touched={input.touched}
             />
           ))}
           <div className={styles.buttonGroup}>
-            <button className={`${styles.btnPrimary}`}>Login</button>
+            <button className={styles.btnPrimary}>Login</button>
             <button className={`${styles.btnPrimary} ${styles.btnSecondary}`}>
-              <i className="fa-brands fa-github"></i>GITHUB
+              <i className="fa-brands fa-github"></i> GITHUB
             </button>
-            <Link href="/auth/register" className={styles.link}>
-              <span>Do you have an account?</span>
+            <Link href="/auth/register/register" className={styles.link}>
+              <span>Dont have an account? Register</span>
             </Link>
           </div>
         </div>

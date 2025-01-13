@@ -1,7 +1,7 @@
-import Header from "@/components/layout/Header";
+import Header from "@/components/layout/Header/Header";
 import Home from "./home";
 import Input from "@/components/form/Input";
-import Footer from "@/components/layout/Footer";
+import Footer from "@/components/layout/footer/Footer";
 
 export default function Index() {
   return (

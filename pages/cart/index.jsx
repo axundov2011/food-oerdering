@@ -1,45 +1,43 @@
-import React from "react";
 import Image from "next/image";
-import Title from "@/components/ui/Title";
+import Title from "../../components/ui/Title";
+import styles from "./index.module.scss";
+
 const Cart = () => {
   return (
-    <div className="min-h-[calc(100vh_-_433px)]">
-      <div className="flex justify-between items-center">
-        <div className="min-h-[calc(100vh_-_433px)] flex items-center flex-1">
-          <table>
-            <thead>
-              <tr>
-                <th>PRODUCT</th>
-                <th>EXTRAS</th>
-                <th>PRICE</th>
-                <th>QUANTITY</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <Image src="/images/f1.png" alt="" width={40} height={40} />
-                  <span>Good Pizza</span>
-                </td>
-                <td>
-                  <span>mayonez, aci, sos, ketçap</span>
-                </td>
-                <td>$20</td>
-                <td>1</td>
-              </tr>
-            </tbody>
-          </table>
+    <div className={styles.container}>
+      {/* Cart Table Bölməsi */}
+      <div className={styles.cartTable}>
+        <table>
+          <thead>
+            <tr>
+              <th>PRODUCT</th>
+              <th>EXTRAS</th>
+              <th>PRICE</th>
+              <th>QUANTITY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className={styles.flexCenter}>
+                <Image className="pizzaImg" src="/images/f1.png" alt="" width={50} height={50} />
+                <span>Good Pizza</span>
+              </td>
+              <td>mayonez, acı sos, ketçap</td>
+              <td>$20</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      {/* Cart Total Bölməsi */}
+      <div className={styles.cartTotal}>
+        <Title addClass={styles.title}>CART TOTAL</Title>
+        <div className={styles.summary}>
+          <b>Subtotal: </b>$20 <br />
+          <b className="inline">Discount: </b>$0.00 <br />
+          <b>Total: </b>$20
         </div>
-        <div className="bg-secondary min-h-[calc(100vh_-_433px)] flex flex-col justify-center  text-white p-12 ">
-          <Title addClass="text-[40px]"> CartTotal</Title>
-          <div className="mt-6">
-            <b>Subtotal: </b>$20 <br />
-            <b className="inline-block my-1">Discount: </b>$0.00 <br />
-            <b>Total: </b>$20
-          </div>
-
-          <button className="btn-primary"> Checkout Now!</button>
-        </div>
+        <button className={styles.btnPrimary}>CHECKOUT NOW!</button>
       </div>
     </div>
   );

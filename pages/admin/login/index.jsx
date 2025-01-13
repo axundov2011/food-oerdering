@@ -1,4 +1,5 @@
 import { ErrorMessage, useFormik } from "formik";
+import styles from "./index.module.scss";
 import Title from "@/components/ui/Title";
 import Input from "@/components/form/Input";
 import Link from "next/link";
@@ -42,30 +43,29 @@ const Login = () => {
   ];
 
   return (
-    <div className="container  mx-auto py-3">
-      <form
-        className="flex flex-col items-center my-20 md:w-1/2 w-full mx-auto"
-        onSubmit={handleSubmit}
-      >
-        <Title addClass="text-[40px] mb-6">Admin Login</Title>
-        <div className="flex flex-col gap-y-3 w-full">
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <Title addClass={styles.title}>Admin Login</Title>
+        <div className={styles.inputGroup}>
           {inputs.map((input) => (
             <Input
+              className={styles.input}
               key={input.id}
               {...input}
               onChange={handleChange}
               onBlur={handleBlur}
+              placeholder={input.placeholder}
+              errorMessage={input.errors}
+              touched={input.touched}
             />
           ))}
-          <div className="flex flex-col w-full gap-y-3 mt-6">
-            <button className="btn-primary">LOGIN</button>
-            <button className="btn-primary !bg-secondary">
-              <i className="fa-brands fa-github"></i>GITHUB
+          <div className={styles.buttonGroup}>
+            <button className={styles.btnPrimary}>Admin Login</button>
+            <button className={`${styles.btnPrimary} ${styles.btnSecondary}`}>
+              <i className="fa-brands fa-github"></i> GITHUB
             </button>
-            <Link href="/" className="">
-              <span className="text-sm underline cursor-pointer text-secondary">
-                Home Page
-              </span>
+            <Link href="/" className={styles.link}>
+              <span>Home Page</span>
             </Link>
           </div>
         </div>

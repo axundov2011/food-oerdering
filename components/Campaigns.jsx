@@ -11,10 +11,9 @@ const CampaignItem = () => {
         <Image
           src="/images/humburger.jpg"
           alt=""
-          layout="fill"
+          fill
           className="hover:scale-105 transition-all"
-          objectFit="cover"
-        />
+          style={{ objectFit: "cover" }}/>
       </div>
       <div className="text-white">
         <Title addClass="text-2xl">Tasty Thursdays</Title>

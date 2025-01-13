@@ -1,12 +1,10 @@
 import { useState } from "react";
 import React from "react";
-import Logo from "../ui/Logo";
+import Logo from "../../ui/Logo";
 import { FaUserAlt, FaShoppingCart, FaSearch } from "react-icons/fa";
 import { GiHamburgerMenu, GiCancel } from "react-icons/gi";
 import { useRouter } from "next/router";
-import OutsideClickHandler from "react-outside-click-handler";
-import Title from "../ui/Title";
-import Search from "../ui/Search";
+import Search from "../../ui/Search";
 import Link from "next/link";
 const Header = () => {
   const [isSearchModal, setIsSearchModal] = useState(false);
@@ -57,7 +55,7 @@ const Header = () => {
           )}
         </nav>
         <div className="flex gap-x-4 items-center">
-          <Link href="/auth/login">
+          <Link href="/auth/login/login">
             <FaUserAlt className="hover:text-primariy transition-all cursor-pointer" />
           </Link>
           <Link href="/cart">
