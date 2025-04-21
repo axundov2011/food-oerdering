@@ -1,24 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Title from '../../ui/Title'
 import Input from '../../form/Input'
 import styles from './index.module.scss'
 import { profileSchema } from '@/schema/profile'
 import { useFormik } from 'formik'
-
-const Account = () => {
+import axios from 'axios'
+const Account = ({user}) => {
+  
+  console.log(user, 'user');
+  
     const onSubmit = async (values, actions) => {
-        await new Promise((resolve) => setTimeout(resolve, 4000));
+        try {
+          console.log("Submitting values:", values);
+          const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/users/${user._id}`, values);
+          console.log(res.data, 'res')
+        } catch (err) {
+          console.log(err, 'err')
+        }
         actions.resetForm();
       };
+
+ 
+      
     const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
        useFormik({
       initialValues: {
-        fullName: "",
-        phoneNumber: "",
-        email: "",
-        address: "",
-        job: "",
-        bio: "",
+        fullName: user?.fullName || "",
+        phoneNumber: user?.phoneNumber || "",
+        email: user?.email || "",
+        address:  user?.address || "",
+        job: user?.job || "",
+        bio: user?.bio || "",
       },
       onSubmit,
       validationSchema: profileSchema,
@@ -94,7 +106,7 @@ const Account = () => {
       />
     ))}
   </div>
-  <button type="submit">Update</button>
+  <button  type="submit">Update</button>
 </form>
 
     </div>

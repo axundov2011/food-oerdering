@@ -4,12 +4,54 @@ import Title from "@/components/ui/Title";
 import Input from "@/components/form/Input";
 import Link from "next/link";
 import { loginSchema } from "@/schema/login";
+import { getSession, signIn, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const Login = () => {
+  const {data: session} = useSession();
+  const {push} = useRouter();
+  const [currentUser, setCourrentUser] = useState(null);
+
   const onSubmit = async (values, actions) => {
-    await new Promise((resolve) => setTimeout(resolve, 4000));
+    const {email, password} = values;
+   try {
+    const res = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
+    });
+    console.log(res, "res");
+    if(res.error){
+      console.log("Login error:", res.error);
+
+    } else {
+      console.log("Login successful:", res);
+    }
     actions.resetForm();
+   } catch (error) {
+    console.log(error)
+   }
+
   };
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+        setCourrentUser(
+          res.data?.find((user) => user.email === session?.user?.email)
+        );
+        session && push("/profile/" + currentUser?._id);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getUser();
+  }, [session, push, currentUser]);
+
+  
 
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
     useFormik({
@@ -21,8 +63,6 @@ const Login = () => {
       validationSchema: loginSchema,
     });
 
-    console.log("Errors:", errors);
-console.log("Touched:", touched);
   const inputs = [
     {
       id: 1,
@@ -42,6 +82,7 @@ console.log("Touched:", touched);
       errors: errors.password,
       touched: touched.password,
     },
+    
   ];
 
   return (
@@ -61,8 +102,8 @@ console.log("Touched:", touched);
             />
           ))}
           <div className={styles.buttonGroup}>
-            <button className={styles.btnPrimary}>Login</button>
-            <button className={`${styles.btnPrimary} ${styles.btnSecondary}`}>
+            <button className={styles.btnPrimary} type="submit">Login</button>
+            <button className={`${styles.btnPrimary} ${styles.btnSecondary}`} type="button" onClick={() => signIn("github")}>
               <i className="fa-brands fa-github"></i> GITHUB
             </button>
             <Link href="/auth/register/register" className={styles.link}>
@@ -74,5 +115,29 @@ console.log("Touched:", touched);
     </div>
   );
 };
+
+
+ export async function getServerSideProps({ req }) {
+   const session = await getSession({ req });
+
+   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users`);
+   const user = await res.data?.find((user) => user.email === session?.user.email);
+ 
+   console.log(user, "user");
+   if (session && user) {
+     return {
+       redirect: {
+         destination: "/profile/" + user._id,
+         permanent: false,
+       },
+     };
+   }
+ 
+   return {
+     props: {
+      
+     },
+   };
+ }
 
 export default Login;

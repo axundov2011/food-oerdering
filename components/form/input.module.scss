@@ -2,10 +2,10 @@
 $primary-color: #007bff; // Sizin `border-primary` rəngi
 $red-color: #ff0000; // Sizin `border-red-500` rəngi
 $danger-color: #ff4d4f; // Sizin `text-danger` rəngi
-
-// Ümumi stil
+$yellow-color: #ffa500;
 .input-wrapper {
   width: 100%;
+  position: relative;
 
   .label {
     position: relative;
@@ -14,37 +14,44 @@ $danger-color: #ff4d4f; // Sizin `text-danger` rəngi
     cursor: text;
 
     .input {
-      height: 3.5rem; 
+      height: 3.5rem;
       width: 100%;
-      border: 1px solid $primary-color;
+      border: 1px solid $yellow-color;
       outline: none;
-      padding: 0 1rem; /* px-4 */
+      padding: 1.5rem 1rem 0.5rem; 
+      font-size: 16px;
       transition: border-color 0.3s;
 
+      &:focus {
+        border-color: darken($yellow-color, 10%);
+      }
+
       &.error {
-        border-color: $red-color; 
+        border-color: $red-color;
       }
 
       &.valid {
-        border-color: $primary-color;
+        border-color: $yellow-color;
       }
     }
 
     .placeholder {
       position: absolute;
-      top: 0;
-      left: 0;
-      padding: 0 1rem;
-      font-size: 0.875rem;
-      display: flex;
-      align-items: center;
-      height: 100%;
-      transition: all 0.3s;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: gray;
+      transition: all 0.3s ease-in-out;
+      pointer-events: none; // Placeholder mətni kliklənməsin
 
-      // Fokusda və ya doldurulduqda
       &.active {
-        height: 1.75rem; 
-        font-size: 0.75rem;
+        top: 5px;
+        left: 10px;
+        font-size: 12px;
+        background: white;
+        padding: 0 5px;
+        transform: translateY(0);
       }
     }
   }
@@ -52,5 +59,7 @@ $danger-color: #ff4d4f; // Sizin `text-danger` rəngi
   .error-message {
     font-size: 0.75rem;
     color: $danger-color;
+    margin-top: 4px;
   }
 }
+

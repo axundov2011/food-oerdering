@@ -10,20 +10,24 @@ const Order = () => {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>PASSWORD</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>STATUS</th>
+              <th>product</th>
+              <th>customer</th>
+              <th>total</th>
+              <th>payment</th>
+              <th>status</th>
+              <th>action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>63117...</td>
-              <td>Baku</td>
-              <td>10.10.2025</td>
+              <td>6107...</td>
+              <td>Aykhan Akhundov</td>
               <td>$18</td>
-              <td>pendign</td>
+              <td>cash</td>
+              <td>paraparing</td>
+              <td>
+                <button className='btn-primary !bg-success'>Next Stage</button>
+              </td>
             </tr>
           </tbody>
         </table>

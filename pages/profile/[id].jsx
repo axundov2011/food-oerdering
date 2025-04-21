@@ -1,13 +1,36 @@
 import Image from "next/image";
 import styles from "./index.module.scss";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Account from "@/components/profile/account";
 import Password from "@/components/profile/password";
 import Order from "../../components/profile/order/index";
+import { useRouter } from "next/router";
+import { getSession, signOut, useSession } from "next-auth/react";
+import axios from "axios";
+import { notFound, redirect } from "next/navigation";
 
-const Profile = () => {
+const Profile = ({user}) => {
+    const {data: session} = useSession();
     const [tabs, setTabs] = useState(0)
+    const {push} = useRouter()
+
+    const handleSignOut = () => {
+      try {
+        if(confirm("Are you sure want to sign out?")){
+          signOut({redirect: false});
+          push("/auth/login/login");
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    useEffect(() => {
+      if(!session){
+        push("/auth/login/login");
+      }
+    }, [session, push])
 
   return (
     <div className={styles.container}>
@@ -19,7 +42,7 @@ const Profile = () => {
             width={100}
             height={100}
           />
-          <b>Aykhan Akhundov</b>
+          <b>{user?.fullName}</b>
         </div>
         <ul className={styles.menu}>
           <li className={styles.menuItem} onClick={() => setTabs(0)}>
@@ -34,7 +57,7 @@ const Profile = () => {
             <i className="fa fa-motorcycle"></i>
             <button>Orders</button>
           </li>
-          <li className={styles.menuItem} onClick={() => setTabs(3)}>
+          <li className={styles.menuItem} onClick={handleSignOut}>
             <i className="fa fa-sign-out"></i>
             <button>Exit</button>
           </li>
@@ -42,7 +65,7 @@ const Profile = () => {
       </div>
       <div className={styles.content}>
       {tabs === 0 && (
-         <Account />
+         <Account user={user} />
       )}
       {tabs === 1 && (
         <Password/>
@@ -55,4 +78,29 @@ const Profile = () => {
   );
 };
 
+export async function getServerSideProps({ req, params }) {
+ 
+  const session = await getSession({req});
+  if(!session){
+    return {
+      redirect: {
+        destination: "/auth/login/login",
+        permanent: false,
+      }
+    }
+  }
+  const user = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/users/${params.id}`
+  );
+
+
+
+ 
+   return {
+     props: {
+       session,
+       user: user ? user.data : null,
+     },
+   };
+ }
 export default Profile;

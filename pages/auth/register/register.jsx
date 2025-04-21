@@ -4,12 +4,28 @@ import Title from "@/components/ui/Title";
 import Input from "@/components/form/Input";
 import { registerSchema } from "@/schema/register";
 import Link from "next/link";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const Register = () => {
+  const {push} = useRouter();
   const onSubmit = async (values, actions) => {
-    await new Promise((resolve) => setTimeout(resolve, 4000));
+   try {
+    const res  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users/register`,values);
+    
+    console.log(res);
+    if(res.status === 200){
+      toast.success("User created successfully");
+      push("/auth/login/login");
+    }
+   } catch (error) {
+    toast.error(error.response.data.message);
+    console.log(error)
+   }
     actions.resetForm();
   };
+  
 
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
     useFormik({
@@ -80,7 +96,7 @@ const Register = () => {
             />
           ))}
           <div className={styles.buttonGroup}>
-            <button className={styles.btnPrimary}>Register</button>
+            <button className={styles.btnPrimary} type="submit">Register</button>
             <Link href="/auth/login/login" className={styles.link}>
               <span>Dont have an account?</span>
             </Link>

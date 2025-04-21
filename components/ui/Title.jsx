@@ -2,8 +2,8 @@ import React from 'react'
 
 const Title = ({children, className}) => {
   return (
-    <div className={`${className} font-dancing font-bold`}>{children}</div>
+    <div className={`${className} font-bold mb-4`}>{children}</div>
   )
 }
-
-export default Title    
+//font-dancing font-bold
+export default Title

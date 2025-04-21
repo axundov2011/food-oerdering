@@ -3,15 +3,16 @@ import { Campaigns } from '@/components/Campaigns'
 import Carusel from '@/components/Carusel'
 import Customers from '@/components/Customers'
 import Reservasion from '@/components/Reservasion'
-import MenuWrappers from '@/components/products/MenuWrappers'
+import MenuWrappers from '@/components/products/meniwrapper'
 import React from 'react'
 
-const Index = () => {
+const Index = ({categoryList}) => {
+  console.log(categoryList, 'categoryList')
   return (
     <>
             <Carusel/>
             <Campaigns/>
-            <MenuWrappers/>
+            <MenuWrappers categoryList={categoryList}/>
             <About/>
             <Reservasion/>
             <Customers/>

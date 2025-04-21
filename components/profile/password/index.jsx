@@ -4,10 +4,17 @@ import Input from '../../form/Input'
 import styles from './index.module.scss'
 import { useFormik } from 'formik'
 import { newPassword } from '@/schema/register'
+import axios from 'axios'
 
-const Password = () => {
+const Password = ({user}) => {
     const onSubmit = async (values, actions) => {
-        await new Promise((resolve) => setTimeout(resolve, 4000));
+        try {
+          const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/users/${user._id}`, values);
+          console.log(res.data, 'res');
+          
+        } catch (err) {
+          console.log(err)
+        }
         actions.resetForm();
         console.log('values',values)
       };
@@ -44,7 +51,7 @@ const Password = () => {
   return (
     <div>
          <form className={styles.formContainer} onSubmit={handleSubmit}>
-  <Title addClass={styles.title}>Account Settings</Title>
+  <Title addClass={styles.title}>Password</Title>
   <div className={styles.formGrid}>
     {inputs.map((input) => (
       <Input

@@ -1,0 +1,80 @@
+$secondary-color: #1f2937; // Tailwind bg-secondary
+$primary-color: #ffa500; // Tailwind hover:bg-primary
+$text-gray-500: #6b7280; // Tailwind text-gray-500
+$text-gray-400: #9ca3af; // Tailwind text-gray-400
+$bg-gray-700: #374151; // Tailwind bg-gray-700
+$border-gray-700: #4b5563; // Tailwind border-gray-700
+$white-color: #ffffff; // Tailwind hover:text-white
+
+.footerSectionWrapper {
+    
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    .footerWrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        max-width: 1200px;
+        gap: 10px;
+    }
+
+    .footerAddLink {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-top: 20px;
+    
+        .inputGroup {
+            width: 100%;
+            max-width: 560px;
+            display: flex;
+            gap: 10px; 
+            justify-content: center;
+            align-items: center;
+            button {
+                margin: 10px 30px;
+                text-align: center;
+                align-items: center;
+            }
+        }
+    
+        .iconWrapper {
+            display: flex;
+            justify-content: flex-end;
+          
+            .iconItem {
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                .delete {
+                    color: red;
+                }
+            }
+        }
+    
+        
+    }
+    
+
+    .updateWrapper {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid $primary-color;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box; 
+    }
+}
