@@ -30,6 +30,7 @@ const Customers = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3500,
+    pauseOnFocus: true,
     arrows: true,
     nextArrow: <NextBtn />,
     prevArrow: <PrevBtn />,

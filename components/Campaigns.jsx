@@ -12,6 +12,7 @@ const CampaignItem = () => {
           src="/images/humburger.jpg"
           alt=""
           fill
+          sizes="144px"
           className="hover:scale-105 transition-all"
           style={{ objectFit: "cover" }}/>
       </div>

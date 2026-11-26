@@ -13,6 +13,7 @@ const Carusel = () => {
         arrows: false,
         autoplay: true,
         autoplaySpeed: 3000,
+        pauseOnFocus: true,
         appenDots: (dots)=> {
             <div>
             <ul>{dots}</ul>
@@ -29,8 +30,9 @@ const Carusel = () => {
           <Image
             src="/images/hero-bg.jpg"
             alt=""
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
           />
         </div>
       </div>

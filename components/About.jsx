@@ -8,7 +8,13 @@ const About = () => {
     <div className="container mx-auto flex items-center text-white gap-20 justify-center flex-wrap-reverse">
       <div className="flex justify-center">
         <div className="relative sm:w-[445px] sm-h-[600px]  flex justify-center w-[300px] h-[450px]">
-          <Image src="/images/about-img.png" alt="" fill  style={{ objectFit: "cover" }} />
+          <Image
+            src="/images/about-img.png"
+            alt=""
+            fill
+            sizes="(min-width: 640px) 445px, 300px"
+            style={{ objectFit: "cover" }}
+          />
         </div>
       </div>
       <div className="md:w-1/2 ">

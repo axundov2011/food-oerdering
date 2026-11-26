@@ -92,7 +92,13 @@ const ProductDetail = () => {
   return (
     <div className={styles["product-container"]}>
       <div className={styles["image-wrapper"]}>
-        <Image src="/images/f1.png" alt="Pizza" layout="fill" objectFit="contain" />
+        <Image
+          src="/images/f1.png"
+          alt="Pizza"
+          fill
+          sizes="(max-width: 767px) 100vw, 50vw"
+          style={{ objectFit: "contain" }}
+        />
       </div>
 
       <div className={styles["content"]}>
@@ -107,15 +113,15 @@ const ProductDetail = () => {
           <h4>Choose the size</h4>
           <div className={styles["size-options"]}>
             <div className={styles["size-option"]} style={{ width: "32px", height: "32px" }} onClick={() => handleSize(0)} >
-              <Image src="/images/pizza-animasyon.jpg" alt="" layout="fill"  />
+              <Image src="/images/pizza-animasyon.jpg" alt="" fill sizes="32px" />
               <span className={styles["size-label"]}>Small</span>
             </div>
             <div className={styles["size-option"]} style={{ width: "48px", height: "48px" }} onClick={() => handleSize(1)}>
-              <Image src="/images/pizza-animasyon.jpg" alt="" layout="fill" />
+              <Image src="/images/pizza-animasyon.jpg" alt="" fill sizes="48px" />
               <span className={styles["size-label"]}>Medium</span>
             </div>
             <div className={styles["size-option"]} style={{ width: "64px", height: "64px" }} onClick={() => handleSize(2)}>
-              <Image src="/images/pizza-animasyon.jpg" alt="" layout="fill" />
+              <Image src="/images/pizza-animasyon.jpg" alt="" fill sizes="64px" />
               <span className={styles["size-label"]}>Large</span>
             </div>
           </div>

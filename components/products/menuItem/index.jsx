@@ -10,7 +10,13 @@ const MenuItem = () => {
       <div className={styles["image-container"]}>
         <Link href="/product">
           <div className={styles["image-wrapper"]}>
-            <Image src="/images/pizza-delicious.png" layout="fill" alt="Pizza" priority />
+            <Image
+              src="/images/pizza-delicious.png"
+              fill
+              sizes="144px"
+              alt="Pizza"
+              priority
+            />
           </div>
         </Link>
       </div>
